@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PersonalTrainer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50b6f4d6a091e9f56baebd13fd84aee4afd9db30")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9499cee92771a3978939c2e275b0cbc1d12d7288")]
 [assembly: System.Reflection.AssemblyProductAttribute("PersonalTrainer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PersonalTrainer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
