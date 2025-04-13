@@ -19,7 +19,9 @@ namespace PersonalTrainer.Models
 
         public int PersonalId { get; set; }
 
-        [ForeignKey("personalId")]
+        public int? Userid { get; set; }
+
+        [ForeignKey("PersonalId")]
         public virtual Personal? Personal { get; set; }
 
         public virtual ICollection<Treino> Treinos { get; set; } = new List<Treino>();

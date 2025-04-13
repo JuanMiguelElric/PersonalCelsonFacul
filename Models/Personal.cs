@@ -7,6 +7,8 @@
 
         public string? Especialidade { get; set; }
 
+        public int? UserId { get; set; }
+
 
         public virtual ICollection<Aluno>  Alunos { get; set; } = new List<Aluno>();
 

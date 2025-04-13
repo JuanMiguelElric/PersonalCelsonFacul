@@ -253,12 +253,9 @@ namespace PersonalTrainer.Data.Migrations
                     b.Property<string>("Telefone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("personalId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("personalId");
+                    b.HasIndex("PersonalId");
 
                     b.ToTable("Alunos");
                 });
@@ -388,7 +385,9 @@ namespace PersonalTrainer.Data.Migrations
                 {
                     b.HasOne("PersonalTrainer.Models.Personal", "Personal")
                         .WithMany("Alunos")
-                        .HasForeignKey("personalId");
+                        .HasForeignKey("PersonalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Personal");
                 });
