@@ -9,15 +9,15 @@ namespace PersonalTrainer.Models
 
         public string? Data_Nascimento { get; set; }
 
-        public string? email { get; set; }
+        public string? Email { get; set; }
 
-        public string? instagram { get; set; }
+        public string? Instagram { get; set; }
 
-        public string? telefone { get; set; }
+        public string? Telefone { get; set; }
 
-        public string? observacoes { get; set; }
+        public string? Observacoes { get; set; }
 
-        public int personalId { get; set; }
+        public int PersonalId { get; set; }
 
         [ForeignKey("personalId")]
         public virtual Personal? Personal { get; set; }
