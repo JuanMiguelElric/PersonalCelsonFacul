@@ -16,5 +16,6 @@ namespace PersonalTrainer.Data
         public DbSet<Treino> Treinos { get; set; }
 
         public DbSet<Exercicio> Exercicios { get; set; }
+
     }
 }

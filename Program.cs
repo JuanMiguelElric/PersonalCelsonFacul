@@ -7,58 +7,49 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using PersonalTrainer.Role;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configuração do Entity Framework e conexão com banco de dados
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Configuração de serviços de identidade
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
+
+// Configuração do Identity para autorização
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+ //informa qual contexto representa o banco de dados
+ .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-// Adicionando autenticação e autorização
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-    };
-});
-
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-    options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
-});
+// Serviços MVC
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Garantir que as roles sejam criadas no início
+// Middleware para inicializar banco de dados e Identity
 using (var scope = app.Services.CreateScope())
 {
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    await RoleSeeder.SeedRolesAsync(roleManager); // Chama o método de seed para as roles
+    var services = scope.ServiceProvider;
+    //define o gerenciador de regras de autorização
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    //define o gerenciador de usuários
+    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+
+    // Criação de roles (Professor e Aluno)
+    //se a role não existir, o gerenciador de roles a cria
+    if (!await roleManager.RoleExistsAsync("Professor"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("Professor"));
+    }
+    if (!await roleManager.RoleExistsAsync("Aluno"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("Aluno"));
+    }
 }
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseMigrationsEndPoint();
-}
-else
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
@@ -68,13 +59,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthentication(); // A autenticação deve ser chamada antes da autorização
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
 
 app.Run();
