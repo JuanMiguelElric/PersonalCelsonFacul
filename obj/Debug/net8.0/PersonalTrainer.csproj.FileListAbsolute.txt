@@ -266,3 +266,4 @@ C:\Users\Juanc\source\repos\PersonalTrainer\bin\Debug\net8.0\runtimes\win\lib\ne
 C:\Users\Juanc\source\repos\PersonalTrainer\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\Juanc\source\repos\PersonalTrainer\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Juanc\source\repos\PersonalTrainer\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\Juanc\source\repos\PersonalTrainer\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
