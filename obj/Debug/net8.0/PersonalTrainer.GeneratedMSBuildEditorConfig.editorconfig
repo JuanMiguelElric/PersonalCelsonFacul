@@ -30,6 +30,26 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Juanc/source/repos/PersonalTrainer/Areas/Personal/Views/Personals/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGVyc29uYWxcVmlld3NcUGVyc29uYWxzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juanc/source/repos/PersonalTrainer/Areas/Personal/Views/Personals/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGVyc29uYWxcVmlld3NcUGVyc29uYWxzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juanc/source/repos/PersonalTrainer/Areas/Personal/Views/Personals/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGVyc29uYWxcVmlld3NcUGVyc29uYWxzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juanc/source/repos/PersonalTrainer/Areas/Personal/Views/Personals/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGVyc29uYWxcVmlld3NcUGVyc29uYWxzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juanc/source/repos/PersonalTrainer/Areas/Personal/Views/Personals/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGVyc29uYWxcVmlld3NcUGVyc29uYWxzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Juanc/source/repos/PersonalTrainer/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
